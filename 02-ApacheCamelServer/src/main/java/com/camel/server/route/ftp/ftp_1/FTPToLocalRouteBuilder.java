@@ -13,7 +13,7 @@ public class FTPToLocalRouteBuilder extends RouteBuilder {
 	// 从FTP上下载文件
 	@Override
 	public void configure() throws Exception {
-		from("ftp://10.0.227.66/?username=cloudsftp&password=cloudsftp&binary=true&passiveMode=true&delete=true&delay=5000").to("file:/temp");
+		from("sftp://192.168.0.214/?username=ftpuser&password=kingyea123&binary=true&passiveMode=true&delete=false&delay=500").to("file:D:/A/outbox");
 	}
 
 }

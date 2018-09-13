@@ -72,7 +72,7 @@ public class ChoiceCamelRouteBuilder extends RouteBuilder {
 							// 存入到exchange的out区域
 							if (exchange.getPattern() == ExchangePattern.InOut) {
 								Message outMessage = exchange.getOut();
-								outMessage.setBody(body + " || 被OtherProcessor处理");
+								outMessage.setBody(body + " || 被 orgId=yuanbao 的Processor处理");
 							}
 
 						}
@@ -90,7 +90,7 @@ public class ChoiceCamelRouteBuilder extends RouteBuilder {
 							// 存入到exchange的out区域
 							if (exchange.getPattern() == ExchangePattern.InOut) {
 								Message outMessage = exchange.getOut();
-								outMessage.setBody(body + " || 被OtherProcessor2处理");
+								outMessage.setBody(body + " || 被 orgId=yinwenjie 的Processor处理");
 							}
 
 						}
@@ -109,7 +109,7 @@ public class ChoiceCamelRouteBuilder extends RouteBuilder {
 							// 存入到exchange的out区域
 							if (exchange.getPattern() == ExchangePattern.InOut) {
 								Message outMessage = exchange.getOut();
-								outMessage.setBody(body + " || 被OtherProcessor3处理");
+								outMessage.setBody(body + " || 被OtherProcessor处理");
 							}
 
 						}

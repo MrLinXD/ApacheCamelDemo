@@ -13,7 +13,8 @@ public class CamelReleaseServiceMain {
 
 	private static final String SERVICE_CLASS = "serviceClass=com.camel.webservice.server.CamelCXFServiceInter";
 
-	private static final String WSDL_LOCATION = "wsdlURL=wsdl/queryService.wsdl";
+	private static final String WSDL_LOCATION = "wsdlURL=F:\\Company\\jinyue\\study\\ApacheCamelDemo\\04-ApacheCamel-CXF-WebService\\wsdl\\queryService.wsdl";
+//	private static final String WSDL_LOCATION = "wsdlURL=http://localhost:9022/camel-cxf/greeter-service?wsdl";
 
 	private static final String ROUTER_ENDPOINT_URI = "cxf://" + ROUTER_ADDRESS + "?" + SERVICE_CLASS + "&"
 			+ WSDL_LOCATION + "&dataFormat=POJO";
@@ -22,8 +23,8 @@ public class CamelReleaseServiceMain {
 
 	public static void main(String[] args) {
 
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		System.out.println("ROUTER_ENDPOINT_URI : " + ROUTER_ENDPOINT_URI);
 

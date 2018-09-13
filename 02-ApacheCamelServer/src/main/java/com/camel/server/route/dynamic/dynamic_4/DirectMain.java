@@ -12,10 +12,13 @@ import org.apache.log4j.PropertyConfigurator;
  */
 public class DirectMain {
 
+	/**
+	 * {"data":{"routeName":"direct:directRouteB,direct:directRouteC"},"token":"d9c33c8f-ae59-4edf-b37f-290ff208de2e","desc":""}
+	 * */
 	public static void main(String[] args) throws Exception {
 
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		// 这是camel上下文对象，整个路由的驱动全靠它了。
 		ModelCamelContext camelContext = new DefaultCamelContext();

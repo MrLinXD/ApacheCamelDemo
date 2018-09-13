@@ -13,8 +13,8 @@ public class CamelTimerServer {
 	public static void main(String[] args) {
 
 		// 日志
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		try {
 
@@ -26,8 +26,7 @@ public class CamelTimerServer {
 
 				@Override
 				public void configure() throws Exception {
-					from("timer://myTimer?period=2s").setBody().simple("Current time is ${header.firedTime}")
-							.to("log:CamelTimerServer?showExchangeId=true");
+					from("timer://myTimer?period=1s").setBody().simple("Current time is ${header.firedTime}").to("log:CamelTimerServer?showExchangeId=true");
 				}
 			});
 

@@ -17,7 +17,7 @@ public class TestClient {
         HttpURLConnection http = null;
 
         try {
-            url = new URL("http://0.0.0.0:8282/choiceCamel");
+            url = new URL("http://0.0.0.0:8282/doHelloWorld");
             singleCall(url);
         } catch (Exception e) {
             e.printStackTrace();

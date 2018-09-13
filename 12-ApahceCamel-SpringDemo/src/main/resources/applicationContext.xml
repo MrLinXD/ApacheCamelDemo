@@ -14,11 +14,11 @@
 
     <bean id="fileConverter" class="com.server.process.FileConvertProcessor"/>
 
-    <camelContext id="testCamelContext" xmlns="http://camel.apache.org/schema/spring">
-        <route>
-            <from uri="file:./input?delay=30000"/>
+    <camelContext id="testCamelContext" xmlns="http://camel.apache.org/schema/spring"><!--new DefaultCamelContext();-->
+        <route><!--camelContext.addRoutes(new APPHelloWorld01());-->
+            <from uri="file:D:\\A\\inbox?delay=2000&amp;noop=true&amp;idempotent=false&amp;delete=false"/>
             <process ref="fileConverter"/>
-            <to uri="file:./output"/>
+            <to uri="file:D:\\A\\outbox"/>
         </route>
     </camelContext>
 

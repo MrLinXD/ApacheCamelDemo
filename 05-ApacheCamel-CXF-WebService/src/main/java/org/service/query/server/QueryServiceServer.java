@@ -17,7 +17,7 @@ public class QueryServiceServer {
 
 		Endpoint.publish(address, new QueryServicePortImpl());
 
-		logger.info("Camel 内部 WebService 发布成功 , address : " + address);
+		System.out.println("Camel 内部 WebService 发布成功 , address : " + address);
 
 	}
 

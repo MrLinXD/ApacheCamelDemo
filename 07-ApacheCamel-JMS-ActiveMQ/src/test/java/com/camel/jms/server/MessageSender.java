@@ -1,15 +1,8 @@
 package com.camel.jms.server;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.DeliveryMode;
-import javax.jms.Destination;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
 
 /**
  * 消息发送者<br>
@@ -22,7 +15,7 @@ public class MessageSender {
 	/** 发送次数 */
 	public static final int SEND_NUM = 5;
 	/** tcp地址 */
-	public static final String BROKER_URL = "tcp://192.168.137.150:61616";
+	public static final String BROKER_URL = "tcp://localhost:61616";
 	/** 目标 */
 	public static final String DESRINATION = "hoo.mq.queue";
 
@@ -59,7 +52,7 @@ public class MessageSender {
 
 		try {
 			// 创建链接工厂.
-			ConnectionFactory factory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
+			ConnectionFactory factory = new ActiveMQConnectionFactory("user", "123", BROKER_URL);
 			// 通过工厂创建一个链接.
 			connection = factory.createConnection();
 			// 启动链接.

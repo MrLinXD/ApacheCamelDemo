@@ -15,19 +15,19 @@ public class CamelJDBCServer {
 
 	public static void main(String[] args) {
 
-		final String url = "jdbc:mysql://192.168.137.150:3306/test1";
+		final String url = "jdbc:mysql://120.79.190.67:3306/test";
 
 		BasicDataSource basicDataSource = new BasicDataSource();
 		basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		basicDataSource.setUsername("");
-		basicDataSource.setPassword("");
+		basicDataSource.setUsername("root");
+		basicDataSource.setPassword("qwe!@#");
 		basicDataSource.setUrl(url);
 		SimpleRegistry simpleregistry = new SimpleRegistry();
 		simpleregistry.put("DataSource", basicDataSource);
 
 		// 日志
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		try {
 

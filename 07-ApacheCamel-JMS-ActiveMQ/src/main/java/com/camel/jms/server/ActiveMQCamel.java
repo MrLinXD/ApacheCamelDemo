@@ -1,14 +1,15 @@
 package com.camel.jms.server;
 
-import javax.jms.ConnectionFactory;
-
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.log4j.PropertyConfigurator;
+
+import javax.jms.ConnectionFactory;
 
 /**
  * 从mq中读取数据
@@ -18,17 +19,17 @@ import org.apache.log4j.PropertyConfigurator;
  */
 public class ActiveMQCamel {
 
-	private static String user = ActiveMQConnection.DEFAULT_USER;
+	private static String user = "user";
 
-	private static String password = ActiveMQConnection.DEFAULT_PASSWORD;
+	private static String password = "123";
 
 	// private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
-	private static String url = "failover://tcp://192.168.137.150:61616";
+	private static String url = "failover://tcp://localhost:61616";
 
 	public static void main(String[] args) throws Exception {
 
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		CamelContext context = new DefaultCamelContext();
 
@@ -42,7 +43,12 @@ public class ActiveMQCamel {
 
 			@Override
 			public void configure() throws Exception {
-				from("jms:queue:hoo.mq.queue").to("file:./input").to("log:activemqcamel?showExchangeId=true");
+				from("jms:queue:hoo.mq.queue").process(new Processor() {
+					@Override
+					public void process(Exchange exchange) throws Exception {
+						System.out.println(exchange.getIn().getBody());
+					}
+				}).to("file:D:\\A\\outbox").to("log:activemqcamel?showExchangeId=true");
 			}
 		});
 

@@ -28,8 +28,8 @@ public class APPHelloWorld01 extends RouteBuilder {
      */
     public static void main(String[] args) throws Exception {
 
-        PropertyConfigurator.configure("./conf/log4j.properties");
-        PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+        PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+        PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
         // 这是camel上下文对象，整个路由的驱动全靠它了。
         ModelCamelContext camelContext = new DefaultCamelContext();
@@ -47,9 +47,14 @@ public class APPHelloWorld01 extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        // 在本代码段之下随后的说明中，会详细说明这个构造的含义
-        from("jetty:http://127.0.0.1:8282/doHelloWorld").process(new HttpProcessor())
-                .to("log:helloworld?showExchangeId=true");
+//         在本代码段之下随后的说明中，会详细说明这个构造的含义
+        from("jetty:http://127.0.0.1:8282/doHelloWorld").process(new HttpProcessor()).to("log:helloworld?showExchangeId=true");
+//        from("direct:start").to("jetty://http://www.baidu.com").process(new Processor() {
+//            public void process(Exchange exchange) throws Exception {
+//                System.out.println(exchange.getIn().getBody());
+//                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+//            }
+//        });
     }
 
     /**
@@ -59,11 +64,10 @@ public class APPHelloWorld01 extends RouteBuilder {
      */
     public class HttpProcessor implements Processor {
 
-        @Override
         public void process(Exchange exchange) throws Exception {
             // 因为很明确消息格式是http的，所以才使用这个类
             // 否则还是建议使用org.apache.camel.Message这个抽象接口
-            HttpMessage message = (HttpMessage) exchange.getIn();
+            HttpMessage message = (HttpMessage) exchange.getIn(HttpMessage.class);
             InputStream bodyStream = (InputStream) message.getBody();
             String inputContext = this.analysisMessage(bodyStream);
             bodyStream.close();

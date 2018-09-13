@@ -33,8 +33,8 @@ public class CamelReleaseServerMain {
 	public static void main(String[] args) {
 
 		// 日志
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		// Camel 上下文
 		CamelContext context = new DefaultCamelContext();
@@ -60,7 +60,7 @@ public class CamelReleaseServerMain {
 				}
 			});
 
-			logger.info("Camel 外部 WebService ： " + ROUTER_ADDRESS);
+			System.out.println("Camel 外部 WebService ： " + ROUTER_ADDRESS);
 			context.start();
 
 			// 通用没有具体业务意义的代码，只是为了保证主线程不退出

@@ -15,7 +15,7 @@ public class FTPToLocalFiterFileNameRouteBuilder extends RouteBuilder {
 	// 从FTP上下载文件(文件后缀名过滤)
 	@Override
 	public void configure() throws Exception {
-		from("ftp://10.0.227.66/?username=cloudsftp&password=cloudsftp&binary=true&delete=true&delay=5000&include=.*conf").process(new Processor() {
+		from("sftp://192.168.0.214/?username=ftpuser&password=kingyea123&binary=true&delete=false&delay=500&include=.*log").process(new Processor() {
 
 			@Override
 			public void process(Exchange exchange) throws Exception {
@@ -29,7 +29,7 @@ public class FTPToLocalFiterFileNameRouteBuilder extends RouteBuilder {
 				// String str = exchange.getIn().getBody(String.class);
 				// System.out.println(str);
 			}
-		}).to("file:/temp");
+		}).to("file:D:/A/outbox");
 	}
 
 }

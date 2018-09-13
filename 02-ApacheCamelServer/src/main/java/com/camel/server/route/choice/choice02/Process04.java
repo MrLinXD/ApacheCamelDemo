@@ -24,7 +24,7 @@ public class Process04 implements Processor {
         InputStream body = exchange.getIn().getBody(InputStream.class);
         String inputContext = IOUtils.toString(body, "UTF-8");
 
-        LOGGER.info("Process04 -- : " + inputContext);
+        System.out.println("Process04 -- : " + inputContext);
 
         // 存入到exchange的out区域
         if (exchange.getPattern() == ExchangePattern.InOut) {

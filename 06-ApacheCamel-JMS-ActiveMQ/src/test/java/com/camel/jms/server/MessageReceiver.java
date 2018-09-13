@@ -1,17 +1,9 @@
 package com.camel.jms.server;
 
-import javax.jms.BytesMessage;
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.log4j.PropertyConfigurator;
+
+import javax.jms.*;
 
 /**
  * 消息接受者
@@ -23,14 +15,14 @@ public class MessageReceiver {
 
 	/** tcp地址 */
 //	public static final String BROKER_URL = "tcp://localhost:61616";
-	public static final String BROKER_URL = "tcp://192.168.137.150:61616";
+	public static final String BROKER_URL = "tcp://localhost:61616";
 	/** 目标 */
 	public static final String DESTINATION = "hoo.mq.queue";
 
 	public static void main(String[] args) throws Exception {
 		
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 		
 		MessageReceiver.run();
 	}
@@ -42,8 +34,8 @@ public class MessageReceiver {
 
 		try {
 			// 创建链接工厂
-			ConnectionFactory factory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,
-					ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
+			ConnectionFactory factory = new ActiveMQConnectionFactory("user",
+					"123", BROKER_URL);
 			// 通过工厂创建一个连接
 			connection = factory.createConnection();
 			// 启动链接

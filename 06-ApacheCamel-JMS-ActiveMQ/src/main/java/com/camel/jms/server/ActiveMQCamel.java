@@ -1,14 +1,15 @@
 package com.camel.jms.server;
 
-import javax.jms.ConnectionFactory;
-
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.log4j.PropertyConfigurator;
+
+import javax.jms.ConnectionFactory;
 
 /**
  * 从本地目录读取文件，然后发送至mq队列中
@@ -18,20 +19,20 @@ import org.apache.log4j.PropertyConfigurator;
  */
 public class ActiveMQCamel {
 
-	private static String user = ActiveMQConnection.DEFAULT_USER;
+	private static String user = "user";//ActiveMQConnection.DEFAULT_USER;
 
-	private static String password = ActiveMQConnection.DEFAULT_PASSWORD;
+	private static String password = "123";//ActiveMQConnection.DEFAULT_PASSWORD;
 
 	//临时测试
 	public static final String DESTINATION = "spring-queue";
 
 //	private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
-	private static String url = "failover://tcp://192.168.137.150:61616";
+	private static String url = "failover://tcp://127.0.0.1:61616";
 
 	public static void main(String[] args) throws Exception {
 
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		CamelContext context = new DefaultCamelContext();
 
@@ -39,13 +40,20 @@ public class ActiveMQCamel {
 
 		context.addComponent("jms", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
 
-		System.out.println(url + " " + user + " " + password);
+		System.out.println(url + " >>>>>>>>>>>>>>>>>>>>>>>>>>> " + user + " >>>>>>>>>>>>>>>>>>>>>>>>>>> " + password);
 
 		context.addRoutes(new RouteBuilder() {
 
 			@Override
-			public void configure() throws Exception {
-				from("file:./input?delay=3000").to("jms:"+DESTINATION);
+			public void configure() throws Exception {// 发送过后就会被移动到.camel文件夹
+				from("file:D:\\A\\inbox?delay=3000").process(new Processor() {
+					@Override
+					public void process(Exchange exchange) throws Exception {
+						Object body = exchange.getIn().getBody();
+						System.out.println(body);
+						System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::");
+					}
+				}).to("jms:"+DESTINATION);
 			}
 		});
 

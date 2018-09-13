@@ -26,8 +26,8 @@ public class CamelFileThreadPool {
 	public static void main(String[] args) throws Exception {
 
 		// 日志
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		final ExecutorService executor = new ThreadPoolExecutor(10, 15, 3, TimeUnit.SECONDS,
 				new LinkedBlockingQueue<Runnable>());
@@ -43,7 +43,7 @@ public class CamelFileThreadPool {
 			@Override
 			public void configure() throws Exception {
 
-				MulticastDefinition multicastDefinition = from("file:./inbox?delay=3000&delete=true&charset=UTF-8")
+				MulticastDefinition multicastDefinition = from("file:D:\\A\\inbox?delay=3000&delete=true&charset=UTF-8")
 						.multicast();
 
 				multicastDefinition.setParallelProcessing(true);

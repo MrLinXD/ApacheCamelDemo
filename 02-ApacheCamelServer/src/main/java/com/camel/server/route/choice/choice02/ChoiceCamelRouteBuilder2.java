@@ -63,7 +63,7 @@ public class ChoiceCamelRouteBuilder2 extends RouteBuilder {
         //        new org.apache.camel.model.language.JsonPathExpression("$.data.orgId");
         //
         //jsonPathExpression.setResultType(String.class);
-        //LOGGER.info("jsonPathExpression : " + jsonPathExpression);
+        //System.out.println("jsonPathExpression : " + jsonPathExpression);
         //
         //from("jetty:http://0.0.0.0:8282/choiceCamel").process(new Process01())
         //        // 将orgId属性的值存储 exchange in Message的header中，以便后续进行判断

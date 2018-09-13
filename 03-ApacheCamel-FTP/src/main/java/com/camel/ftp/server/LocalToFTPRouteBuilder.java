@@ -16,7 +16,7 @@ public class LocalToFTPRouteBuilder extends RouteBuilder {
 	public void configure() throws Exception {
 		// 注意：10.0.227.66 IP后面的斜杠'/'代表的就是FTP用户名密码对应的那个目录
 //		from("file:/temp?delay=30000&delete=true").to("ftp://10.0.227.66/?username=cloudsftp&password=cloudsftp");
-		from("file:./inbox?delay=30000&delete=true").to("sftp://192.168.137.150/?username=testwww&password=123456");
+		from("file:D:\\A\\inbox?delay=30000&delete=true").to("sftp://192.168.137.150/?username=testwww&password=123456");
 	}
 
 }

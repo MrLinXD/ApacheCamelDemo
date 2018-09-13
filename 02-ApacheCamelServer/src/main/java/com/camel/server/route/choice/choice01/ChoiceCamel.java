@@ -12,10 +12,13 @@ import org.apache.log4j.PropertyConfigurator;
  */
 public class ChoiceCamel {
 
+	/**
+	 * {"data":{"orgId":"yuanbao"},"token":"asdaopsd89as0d8as7dasdas-=8a90sd7as6dasd","desc":"desc"}
+	 * */
 	public static void main(String[] args) throws Exception {
 
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		// 这是camel上下文对象，整个路由的驱动全靠它了。
 		ModelCamelContext camelContext = new DefaultCamelContext();

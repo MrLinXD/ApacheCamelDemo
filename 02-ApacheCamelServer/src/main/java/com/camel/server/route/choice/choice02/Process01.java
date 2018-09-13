@@ -23,7 +23,7 @@ public class Process01 implements Processor {
         InputStream bodyStream = exchange.getIn().getBody(InputStream.class);
         String inputContext = IOUtils.toString(bodyStream, "UTF-8");
 
-        LOGGER.info("Process01 -- : " + inputContext);
+        System.out.println("Process01 -- : " + inputContext);
 
         bodyStream.close();
         // 存入到exchange的out区域

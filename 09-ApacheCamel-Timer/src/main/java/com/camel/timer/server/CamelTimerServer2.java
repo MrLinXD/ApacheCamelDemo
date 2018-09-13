@@ -15,8 +15,8 @@ public class CamelTimerServer2 {
 	public static void main(String[] args) {
 
 		// 日志
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		try {
 
@@ -31,7 +31,7 @@ public class CamelTimerServer2 {
 
 					from("timer://foo?period=2s").process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
-							logger.info("Hello world  :" + System.currentTimeMillis());
+							System.out.println("Hello world  :" + System.currentTimeMillis());
 						}
 					});
 

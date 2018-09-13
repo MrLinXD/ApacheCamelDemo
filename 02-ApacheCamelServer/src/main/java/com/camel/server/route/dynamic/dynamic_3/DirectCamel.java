@@ -25,8 +25,8 @@ public class DirectCamel {
 	public static void main(String[] args) throws Exception {
 
 		// 加载日志
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		// 这是camel上下文对象，整个路由的驱动全靠它了。
 		ModelCamelContext camelContext = new DefaultCamelContext();

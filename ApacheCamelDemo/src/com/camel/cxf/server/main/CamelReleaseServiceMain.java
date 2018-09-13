@@ -23,8 +23,8 @@ public class CamelReleaseServiceMain {
 
 	public static void main(String[] args) {
 
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		System.out.println("ROUTER_ENDPOINT_URI : " + ROUTER_ENDPOINT_URI);
 

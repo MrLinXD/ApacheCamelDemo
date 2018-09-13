@@ -24,7 +24,7 @@ public class QueryServicePortImpl implements QueryServiceInter {
 	public static final Logger logger = Logger.getLogger(QueryServicePortImpl.class);
 
 	public java.lang.String queryCarInfomation(java.lang.String carParam) {
-		logger.info("Executing operation queryCarInfomation");
+		System.out.println("Executing operation queryCarInfomation");
 		System.out.println(carParam);
 		try {
 			java.lang.String _return = "";
@@ -37,7 +37,7 @@ public class QueryServicePortImpl implements QueryServiceInter {
 
 	public java.lang.String queryPersonnelInformation(java.lang.String peopleParam) {
 
-		logger.info("Executing operation queryPersonnelInformation");
+		System.out.println("Executing operation queryPersonnelInformation");
 
 		System.out.println(peopleParam);
 

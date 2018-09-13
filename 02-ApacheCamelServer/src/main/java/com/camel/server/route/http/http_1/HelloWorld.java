@@ -1,9 +1,5 @@
 package com.camel.server.route.http.http_1;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.Message;
@@ -14,6 +10,10 @@ import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.model.ModelCamelContext;
 import org.apache.log4j.PropertyConfigurator;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * 郑重其事的写下 helloworld for Apache Camel
  * 
@@ -22,8 +22,8 @@ public class HelloWorld extends RouteBuilder {
 
 	public static void main(String[] args) throws Exception {
 
-		PropertyConfigurator.configure("./conf/log4j.properties");
-		PropertyConfigurator.configureAndWatch("./conf/log4j.properties", 1000);
+		PropertyConfigurator.configure("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties");
+		PropertyConfigurator.configureAndWatch("F:/Company/jinyue/study/ApacheCamelDemo/01-ApacheCamel-HelloWorld/conf/log4j.properties", 1000);
 
 		// 这是camel上下文对象，整个路由的驱动全靠它了。
 		ModelCamelContext camelContext = new DefaultCamelContext();
@@ -47,7 +47,7 @@ public class HelloWorld extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		// 在本代码段之下随后的说明中，会详细说明这个构造的含义
-		from("jetty:http://127.0.0.1:8282/doHelloWorld").process(new HttpProcessor())
+		from("jetty:http://0.0.0.0:8282/doHelloWorld").process(new HttpProcessor())
 				.to("log:helloworld?showExchangeId=true");
 	}
 

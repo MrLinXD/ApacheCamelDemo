@@ -16,13 +16,13 @@ import java.net.URL;
  */
 @WebServiceClient(name = "CamelCXFServiceImplService", 
                   wsdlLocation = "http://localhost:8088/CamelCXFService/queryService?wsdl",
-                  targetNamespace = "http://server.cxf.camel.com/") 
+                  targetNamespace = "http://server.cxf.camel.com/")// 为何这里不用改为http://server.webservice.camel.com/ ？随便写都可以的饿吗
 public class CamelCXFServiceImplService extends Service {
 
     public final static URL WSDL_LOCATION;
 
-    public final static QName SERVICE = new QName("http://server.cxf.camel.com/", "CamelCXFServiceImplService");
-    public final static QName CamelCXFServiceImplPort = new QName("http://server.cxf.camel.com/", "CamelCXFServiceImplPort");
+    public final static QName SERVICE = new QName("http://server.webservice.camel.com/", "CamelCXFServiceImplService");// 为何不是 http://server.cxf.camel.com/   javax.xml.ws.WebServiceException: {http://server.cxf.camel.com/}CamelCXFServiceImplService不是有效服务。有效服务为: {http://server.webservice.camel.com/}CamelCXFServiceImplService
+    public final static QName CamelCXFServiceImplPort = new QName("http://server.webservice.camel.com/", "CamelCXFServiceImplPort");// 为何不是 http://server.cxf.camel.com/  javax.xml.ws.WebServiceException: {http://server.cxf.camel.com/}CamelCXFServiceImplPort 不是有效端口。有效端口为: {http://server.webservice.camel.com/}CamelCXFServiceImplPort
     static {
         URL url = null;
         try {

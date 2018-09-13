@@ -16,9 +16,9 @@ public class Process07 implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
 
-        LOGGER.info("=====Process07=====");
-        LOGGER.info("Process07 - " + exchange.toString());
-        LOGGER.info("=====Process07=====");
+        System.out.println("=====Process07=====");
+        System.out.println("Process07 - " + exchange.toString());
+        System.out.println("=====Process07=====");
 
     }
 
